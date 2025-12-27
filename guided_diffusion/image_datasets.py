@@ -69,6 +69,12 @@ def load_data_inpa(
     gt_paths = _list_image_files_recursively(gt_dir)
     mask_paths = _list_image_files_recursively(mask_dir)
 
+    if len(gt_paths) != len(mask_paths):
+        # 如果gt和mask的文件数量不一致，打印错误信息
+        print(f"Error: Mismatch in dataset file counts!")
+        print(mask_paths)
+        print(gt_paths)
+    
     assert len(gt_paths) == len(mask_paths)
 
     classes = None
